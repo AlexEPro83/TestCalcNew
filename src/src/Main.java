@@ -18,14 +18,70 @@ public class Main {
             }
         }
         catch(Exception ex){
-
             System.out.println(ex.getMessage());
         }
 
         int numberTypeOperand1 = numberType(expressionSplit[0]);
         int numberTypeOperand2 = numberType(expressionSplit[2]);
 
+        try{
+            if ((numberTypeOperand1 == 0) || (numberTypeOperand2 == 0)) {
+                throw new Exception("Ошибка преобразования из строки в число");
+            }
+            if (numberTypeOperand1 != numberTypeOperand2) {
+                throw new Exception("используются одновременно разные системы счисления");
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
+        int operand1;
+        int operand2;
+
+        if (numberTypeOperand1 == 2)  {
+            operand1 = toArabic(expressionSplit[0]);
+        }
+        else {
+            operand1 = Integer.parseInt(expressionSplit[0]);
+        }
+        if (numberTypeOperand2 == 2)  {
+            operand2 = toArabic(expressionSplit[2]);
+        }
+        else {
+            operand2 = Integer.parseInt(expressionSplit[2]);
+        }
+
+        try{
+            if ((numberTypeOperand1 == 2) && (operand1 < operand2)) {
+                throw new Exception("в римской системе нет отрицательных чисел");
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        int res = 0;
+
+        try{
+            res = switch (expressionSplit[1]) {
+                case "+" -> operand1 + operand2;
+                case "-" -> operand1 - operand2;
+                case "*" -> operand1 * operand2;
+                case "/" -> operand1 / operand2;
+                default -> throw new Exception("не допустимая операция");
+            };
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        if (numberTypeOperand1 == 2)  {
+            System.out.println(toRoman(res));
+        }
+        else {
+            System.out.println(res);
+        }
     }
 
     private static final int[] intervals={0, 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
@@ -68,7 +124,7 @@ public class Main {
     }
 
     static int numberType(String number) {  //0 - ошибка, 1 - арабская, 2- римская
-        int res = -1;
+        int res = 0;
         try{
 
             int res1 = Integer.parseInt(number);
