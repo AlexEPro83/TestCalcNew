@@ -70,6 +70,7 @@ public class Main {
     static int numberType(String number) {  //0 - ошибка, 1 - арабская, 2- римская
         int res = 0;
         try{
+
             int res1 = Integer.parseInt(number);
             res = 1;
         }
