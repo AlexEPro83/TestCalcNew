@@ -7,7 +7,12 @@ public class Main {
         String expression = in.nextLine();
         in.close();
 
-        String[] expressionSplit = expression.split(" ");
+        System.out.println(calc(expression));
+    }
+
+    public static String calc(String input) {
+
+        String[] expressionSplit = input.split(" ");
 
         try{
             if(expressionSplit.length > 3){
@@ -90,10 +95,10 @@ public class Main {
         }
 
         if (numberTypeOperand1 == 2)  {
-            System.out.println(toRoman(res));
+            return toRoman(res);
         }
         else {
-            System.out.println(res);
+            return String.valueOf(res);
         }
     }
 
