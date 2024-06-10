@@ -19,6 +19,7 @@ public class Main {
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.exit(0);
         }
 
         int numberTypeOperand1 = numberType(expressionSplit[0]);
@@ -34,6 +35,7 @@ public class Main {
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.exit(0);
         }
 
         int operand1;
@@ -59,21 +61,32 @@ public class Main {
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.exit(0);
         }
 
         int res = 0;
 
         try{
-            res = switch (expressionSplit[1]) {
-                case "+" -> operand1 + operand2;
-                case "-" -> operand1 - operand2;
-                case "*" -> operand1 * operand2;
-                case "/" -> operand1 / operand2;
-                default -> throw new Exception("не допустимая операция");
-            };
+            switch(expressionSplit[1]){
+                case "+":
+                    res = operand1 + operand2;
+                    break;
+                case "-":
+                    res = operand1 - operand2;
+                    break;
+                case "*":
+                    res = operand1 * operand2;
+                    break;
+                case "/":
+                    res = operand1 / operand2;
+                    break;
+                default:
+                    throw new Exception("не допустимая операция");
+            }
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.exit(0);
         }
 
         if (numberTypeOperand1 == 2)  {
@@ -141,6 +154,7 @@ public class Main {
             }
             catch(Exception exc){
                 //System.out.println("Ошибка преобразования из строки в число римское 2");
+                System.exit(0);
             }
         }
         return res;
