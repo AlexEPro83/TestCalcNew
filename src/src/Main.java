@@ -46,14 +46,16 @@ public class Main {
         int operand1;
         int operand2;
 
-        if (numberTypeOperand1 == 2)  {
-            operand1 = toArabic(expressionSplit[0]);
+        if (numberTypeOperand1 == 2) {
+            //operand1 = toArabic(expressionSplit[0]);
+            operand1 = ConvertToRoman.convert(expressionSplit[0]);
         }
         else {
             operand1 = Integer.parseInt(expressionSplit[0]);
         }
         if (numberTypeOperand2 == 2)  {
-            operand2 = toArabic(expressionSplit[2]);
+            //operand2 = toArabic(expressionSplit[2]);
+            operand2 = ConvertToRoman.convert(expressionSplit[2]);
         }
         else {
             operand2 = Integer.parseInt(expressionSplit[2]);
@@ -130,6 +132,7 @@ public class Main {
         return numerals[floorIndex]+toRoman(number-intervals[floorIndex]);
     }
 
+    /*
     static int toArabic(String roman) {
         int result = 0;
         for (int i = intervals.length-1; i >= 0; i-- ) {
@@ -141,6 +144,8 @@ public class Main {
         return result;
     }
 
+    */
+
     static int numberType(String number) {  //0 - ошибка, 1 - арабская, 2- римская
         int res = 0;
         try{
@@ -151,14 +156,14 @@ public class Main {
         catch(NumberFormatException ex){
             //System.out.println("Ошибка преобразования из строки в число");
             try{
-                int res2 = toArabic(number);
+                int res2 = ConvertToRoman.convert(number); //toArabic(number);
                 if (res2 == 0){
                     throw new Exception("Ошибка преобразования из строки в число римское");
                 }
                 res = 2;
             }
             catch(Exception exc){
-                //System.out.println("Ошибка преобразования из строки в число римское 2");
+                System.out.println("Ошибка преобразования из строки в число римское");
                 System.exit(0);
             }
         }
