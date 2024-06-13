@@ -158,12 +158,12 @@ public class Main {
             try{
                 int res2 = ConvertToRoman.convert(number); //toArabic(number);
                 if (res2 == 0){
-                    throw new Exception("Ошибка преобразования из строки в число римское");
+                    throw new Exception("Ошибка преобразования из строки в число римское или же один из операндов больше 10 или меньше 1");
                 }
                 res = 2;
             }
             catch(Exception exc){
-                System.out.println("Ошибка преобразования из строки в число римское");
+                System.out.println("Ошибка преобразования из строки в число римское или же один из операндов больше 10 или меньше 1");
                 System.exit(0);
             }
         }
