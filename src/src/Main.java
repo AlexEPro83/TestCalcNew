@@ -63,7 +63,7 @@ public class Main {
 
         try{
             if ((numberTypeOperand1 == 2) && (operand1 < operand2)) {
-                throw new Exception("в римской системе нет отрицательных чисел");
+                throw new Exception("в римской системе нет отрицательных чисел");//
             }
         }
         catch(Exception ex){
